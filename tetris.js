@@ -32,19 +32,21 @@ function drawMatrix(matrix, offset){
     });
 }
 
+function playerDrop(){
+    player.pos.y++;
+    dropCounter = 0;
+}
 
-var dropCounter = 0;
-var dropInterval = 1000;
+let dropCounter = 0;
+let dropInterval = 1000;
 
-var lastTime = 0;
+let lastTime = 0;
 function update (time = 0){
-    var deltaTime = time - lastTime;
+    const deltaTime = time - lastTime;
     lastTime = time;
     dropCounter += deltaTime;
     if(dropCounter > dropInterval){
-        player.pos.y++;
-        console.log(player.pos.y);
-        dropCounter = 0;
+        playerDrop();
     }
     draw();
     // https://developer.mozilla.org/es/docs/Web/API/Window/requestAnimationFrame
@@ -52,10 +54,23 @@ function update (time = 0){
 }
 
 
-var player = {
+const player = {
     pos: {x:5, y:5},
     matrix: matrix,
 }
+
+document.addEventListener('keydown', event =>{
+    if(event.keyCode === 37){
+        // left arrow
+        player.pos.x--;
+    }else if (event.keyCode === 39){
+        // right arrow
+        player.pos.x++;
+    }else if (event.keyCode === 40){
+        // down arrow
+        playerDrop();
+    }
+});
 
 
 update();
