@@ -294,11 +294,11 @@ function playBgSound() {
 
     
 }
-sounds.bg.addEventListener('ended', function() {
-    console.log('canción terminada');
-    this.currentTime = 0;
-    playBgSound();
-}, false);
+// sounds.bg.addEventListener('ended', function() {
+//     console.log('canción terminada');
+//     this.currentTime = 0;
+//     playBgSound();
+// }, false);
 
 var isPaused = true;
 function startGame() {
