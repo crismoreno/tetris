@@ -81,7 +81,7 @@ button{
         display: flex !important;
     }
     canvas{
-        height: 60vh;
+        height: 70vh;
         width: 80vw
     }
     #startGame, #pauseGame, #resumeGame{
