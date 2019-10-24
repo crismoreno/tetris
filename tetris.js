@@ -247,7 +247,6 @@ function update (time = 0){
     // https://developer.mozilla.org/es/docs/Web/API/Window/requestAnimationFrame
     
     playStop = requestAnimationFrame(update);
-
 }
 
 function updateScore(){
@@ -273,6 +272,16 @@ const player = {
     matrix: null,
     score: 0
 }
+
+
+document.getElementById('left').addEventListener("click", function() { playerMove(-1) });
+document.getElementById('right').addEventListener("click", function() { playerMove(1) });
+document.getElementById('down').addEventListener("click", function() { playerDrop() });
+document.getElementById('rotate').addEventListener("click", function() { playerRotate(1); });
+
+
+
+
 // http://pomle.github.io/keycode/
 document.addEventListener('keydown', event =>{
     if(event.keyCode === 37){

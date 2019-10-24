@@ -31,7 +31,7 @@ button{
     margin: 0 auto;
 }
 
-#startGame, #pauseGame, #resumeGame {
+#startGame, #pauseGame, #resumeGame, #left, #right, #down, #rotate {
     background-color: black;
     font-size: 18pt;
     font-family: 'Arcade';
@@ -52,8 +52,20 @@ button{
 }
 
 
-#resumeGame:active, #pauseGame:active, #startGame:active{
+#resumeGame:active, #pauseGame:active, #startGame:active, #left:active, #down:active, #right:active, #rotate:active{
 	box-shadow: none;
 	position: relative;
 	top: .2em;
+}
+
+
+
+@media (max-width: 768px) {
+    .mobile-controls{
+        display: flex !important;
+    }
+    canvas{
+        height: 80vh;
+        width: 80vw
+    }
 }
