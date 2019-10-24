@@ -1,7 +1,9 @@
 const canvas = document.getElementById('tetrisboard');
 const context = canvas.getContext('2d');
 
-
+var sounds = {
+    bg: new Audio("assets/Tetris.ogg"),
+};
 
 // https://www.w3schools.com/tags/canvas_scale.asp
 context.scale(20, 20);
@@ -209,6 +211,8 @@ function update (time = 0){
     draw();
     // https://developer.mozilla.org/es/docs/Web/API/Window/requestAnimationFrame
     requestAnimationFrame(update);
+
+    // backgroundMusic = new sound ("assets/Tetris.ogg");
 }
 
 function updateScore(){
@@ -234,7 +238,7 @@ const player = {
     matrix: null,
     score: 0
 }
-
+// http://pomle.github.io/keycode/
 document.addEventListener('keydown', event =>{
     if(event.keyCode === 37){
         // left arrow
@@ -245,14 +249,31 @@ document.addEventListener('keydown', event =>{
     }else if (event.keyCode === 40){
         // down arrow
         playerDrop();
-    }else if (event.keyCode === 81){
-        playerRotate(-1);
-    }else if (event.keyCode === 87){
+    }else if (event.keyCode === 32){
         playerRotate(1);
     }
+    //else if (event.keyCode === 87){
+    //     playerRotate(1);
+    // }
 });
 
+function playBgSound() {
+    sounds.bg.load()
+    sounds.bg.addEventListener("canplaythrough", function() {
+        sounds.bg.play().then(_ => {
+            console.log("PLAY")
+        }).catch(error => {
+            console.log(error.message)
+        });;
+    }, true);
 
-playerReset();
-updateScore();
-update();
+}
+
+
+function startGame() {
+    playBgSound();
+    playerReset();
+    updateScore();
+    update();
+}
+
