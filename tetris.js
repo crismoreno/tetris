@@ -18,29 +18,90 @@ var sounds = {
 context.scale(20, 20);
 
 
+// function arenaSweep(){
+//     let rowCount = 1; 
+//     outer: for (let y = arena.length -1; y > 0; --y ){
+//         for (let x = 0; x < arena[y].length; ++x){
+//             if(arena[y][x] === 0){
+//                 continue outer;
+//             }
+//         }
+//         const row = arena.splice(y, 1)[0].fill(0);
+//         arena.unshift(row);
+//         ++y;
+//         player.score += rowCount * 10;
+//         rowCount *= 2;
+
+
+//         sounds.success.load()
+//         sounds.success.addEventListener("canplaythrough", function() {
+//         sounds.success.play().then(_ => {
+//             console.log("PLAY SUCCESSSS");
+//         }).catch(error => {
+//             console.log(error.message)
+//         });
+//     }, true);
+//     }
+// }
+
+
 function arenaSweep(){
-    let rowCount = 1; 
-    outer: for (let y = arena.length -1; y > 0; --y ){
-        for (let x = 0; x < arena[y].length; ++x){
-            if(arena[y][x] === 0){
-                continue outer;
+    let rowCount = 1;
+    let cn = 0;
+    outer: for (let y = arena.length -1; y > 0; --y )
+    {
+        cn = 0;
+        for (let z = 0; z < arena[y].length; ++z)
+        {
+            if(arena[y][z] === 8)
+            {
+               cn++;
             }
         }
-        const row = arena.splice(y, 1)[0].fill(0);
-        arena.unshift(row);
-        ++y;
-        player.score += rowCount * 10;
-        rowCount *= 2;
+        if (cn == 0)
+        {
+            for (let x = 0; x < arena[y].length; ++x)
+            {
+                if(arena[y][x] === 0)
+                {
+                   continue outer;
+                }
+            }
+            const row = arena.splice(y, 1)[0].fill(0);
+            arena.unshift(row);
+            ++y;
+            player.score += rowCount * 10;
+            rowCount *= 2;
 
 
-        sounds.success.load()
-        sounds.success.addEventListener("canplaythrough", function() {
-        sounds.success.play().then(_ => {
-            console.log("PLAY SUCCESSSS");
-        }).catch(error => {
-            console.log(error.message)
-        });;
-    }, true);
+            sounds.success.load()
+            sounds.success.addEventListener("canplaythrough", function() {
+                sounds.success.play().then(_ => {
+                    console.log("PLAY SUCCESSSS");
+                }).catch(error => {
+                    console.log(error.message)
+                });
+            }, true);
+        }
+        else
+        {
+            const row = arena.splice(y, 1)[0].fill(0);
+            arena.unshift(row);
+            ++y;
+            player.score += rowCount * 10;
+            rowCount *= 2;
+
+
+
+            sounds.success.load()
+            sounds.success.addEventListener("canplaythrough", function() {
+                sounds.success.play().then(_ => {
+                    console.log("PLAY SUCCESSSS");
+                }).catch(error => {
+                     console.log(error.message)
+                });
+            }, true);
+        } 
     }
 }
 
@@ -124,6 +185,13 @@ function createPiece(type){
             [0, 0, 0]
         ]    
     break;
+
+    case 'D':
+        return[
+            [8, 0],
+            [0, 8]
+        ]    
+    break;
     }
 }
 
@@ -182,7 +250,7 @@ function playerMove(dir){
 }
 
 function playerReset(){
-    const pieces = 'ILJOTSZ';
+    const pieces = 'ILJOTSZD';
     player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
     player.pos.y = 0;
     player.pos.x = (arena[0].length / 2 | 0) - 
@@ -262,7 +330,8 @@ const colors = [
     'purple',
     'orange', 
     'teal', 
-    'pink'
+    'pink', 
+    'white'
 ]
 const arena = createMatrix(12, 20); 
 
