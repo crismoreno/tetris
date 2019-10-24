@@ -251,7 +251,7 @@ function update (time = 0){
 }
 
 function updateScore(){
-    document.getElementById('score').innerText = player.score;
+    document.getElementById('score').innerText = player.score + " POINTS";
 }
 
 
@@ -314,7 +314,7 @@ sounds.bg.addEventListener('ended', function() {
 var isPaused = true;
 function startGame() {
     startGameButton.style.display = "none";
-    pauseGameButton.style.display = "block";
+    pauseGameButton.style.display = "inline-block";
     isPaused = false;
     playBgSound();
     playerReset();
@@ -333,7 +333,7 @@ window.onkeydown = function() {
 function pauseGame(){
     var isPaused = true;
     pauseGameButton.style.display = "none";
-    resumeGameButton.style.display = "block";
+    resumeGameButton.style.display = "inline-block";
 
     window.cancelAnimationFrame(playStop);
 
@@ -343,7 +343,7 @@ function pauseGame(){
 
 function resumeGame(){
     resumeGameButton.style.display = "none";
-    pauseGameButton.style.display = "block";
+    pauseGameButton.style.display = "inline-block";
     update();
     sounds.bg.play()
 }
