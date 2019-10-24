@@ -11,7 +11,8 @@ resumeGameButton.addEventListener("click", function() { resumeGame() });
 
 var sounds = {
     bg: new Audio("assets/Tetris.ogg"),
-    success: new Audio("assets/jose-yeahright.m4a")
+    success: new Audio("assets/jose-yeahright.m4a"),
+    test: new Audio("assets/healing_01.mp3")
 };
 
 // https://www.w3schools.com/tags/canvas_scale.asp
@@ -100,7 +101,7 @@ function arenaSweep(){
                 }).catch(error => {
                      console.log(error.message)
                 });
-            }, true);
+        }, true);
         } 
     }
 }
@@ -371,9 +372,9 @@ document.addEventListener('keydown', event =>{
 });
 
 function playBgSound() {
-    sounds.bg.load()
-    sounds.bg.addEventListener("canplaythrough", function() {
-        sounds.bg.play().then(_ => {
+    sounds.test.load()
+    sounds.test.addEventListener("canplaythrough", function() {
+        sounds.test.play().then(_ => {
             console.log("PLAY");
         }).catch(error => {
             console.log(error.message)
