@@ -1,11 +1,11 @@
 const canvas = document.getElementById('tetrisboard');
 const context = canvas.getContext('2d');
 
-// const startGameButton = document.getElementById('startGame');
+const startGameButton = document.getElementById('startGame');
 const pauseGameButton = document.getElementById('pauseGame');
 const resumeGameButton = document.getElementById('resumeGame');
 
-startGameButton.addEventListener("click", startGame);
+// startGameButton.addEventListener("click", startGame);
 pauseGameButton.addEventListener("click", pauseGame);
 resumeGameButton.addEventListener("click", resumeGame);
 
