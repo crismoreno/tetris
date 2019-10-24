@@ -20,8 +20,23 @@
     <link rel="icon" type="image/png" sizes="96x96" href="https://tetris.com/assets/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://tetris.com/assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="https://tetris.com/assets/images/favicon/manifest.json">
+
+    <style>
+        body{
+            background: #202028;
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 2am;
+            text-align: center;
+        }
+        canvas{
+            border: solid .2em #fff;
+            height: 90vh;
+        }
+    </style>
 </head>
 <body>
+    <div id="score"></div>
     <canvas height="400" width="240" id="tetrisboard"></canvas>
     <script src="tetris.js"></script>
 </body>
