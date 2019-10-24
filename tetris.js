@@ -1,7 +1,7 @@
 const canvas = document.getElementById('tetrisboard');
 const context = canvas.getContext('2d');
 
-const startGameButton = document.getElementById('startGame');
+// const startGameButton = document.getElementById('startGame');
 const pauseGameButton = document.getElementById('pauseGame');
 const resumeGameButton = document.getElementById('resumeGame');
 
@@ -294,11 +294,11 @@ function playBgSound() {
 
     
 }
-// sounds.bg.addEventListener('ended', function() {
-//     console.log('canción terminada');
-//     this.currentTime = 0;
-//     playBgSound();
-// }, false);
+sounds.bg.addEventListener('ended', function() {
+    console.log('canción terminada');
+    this.currentTime = 0;
+    playBgSound();
+}, false);
 
 var isPaused = true;
 function startGame() {
