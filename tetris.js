@@ -51,17 +51,13 @@ function arenaSweep(){
     outer: for (let y = arena.length -1; y > 0; --y )
     {
         cn = 0;
-        for (let z = 0; z < arena[y].length; ++z)
-        {
-            if(arena[y][z] === 8)
-            {
+        for (let z = 0; z < arena[y].length; ++z){
+            if(arena[y][z] === 8){
                cn++;
             }
         }
-        if (cn == 0)
-        {
-            for (let x = 0; x < arena[y].length; ++x)
-            {
+        if (cn == 0){
+            for (let x = 0; x < arena[y].length; ++x){
                 if(arena[y][x] === 0)
                 {
                    continue outer;
@@ -73,7 +69,6 @@ function arenaSweep(){
             player.score += rowCount * 10;
             rowCount *= 2;
 
-
             sounds.success.load()
             sounds.success.addEventListener("canplaythrough", function() {
                 sounds.success.play().then(_ => {
@@ -82,9 +77,7 @@ function arenaSweep(){
                     console.log(error.message)
                 });
             }, true);
-        }
-        else
-        {
+        }else{
             const row = arena.splice(y, 1)[0].fill(0);
             arena.unshift(row);
             ++y;
@@ -100,7 +93,7 @@ function arenaSweep(){
                 }).catch(error => {
                      console.log(error.message)
                 });
-        }, true);
+            }, true);
         } 
     }
 }
@@ -378,7 +371,7 @@ function playBgSound() {
         }).catch(error => {
             console.log(error.message)
         });;
-    }, true);
+}, true);
 
 
     
