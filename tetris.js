@@ -11,6 +11,7 @@ resumeGameButton.addEventListener("click", function() { resumeGame() });
 
 var sounds = {
     bg: new Audio("assets/Tetris.ogg"),
+    success: new Audio("assets/jose-yeahright.m4a")
 };
 
 // https://www.w3schools.com/tags/canvas_scale.asp
@@ -30,6 +31,16 @@ function arenaSweep(){
         ++y;
         player.score += rowCount * 10;
         rowCount *= 2;
+
+
+        sounds.success.load()
+        sounds.success.addEventListener("canplaythrough", function() {
+        sounds.success.play().then(_ => {
+            console.log("PLAY SUCCESSSS");
+        }).catch(error => {
+            console.log(error.message)
+        });;
+    }, true);
     }
 }
 
