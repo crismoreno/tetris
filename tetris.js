@@ -10,9 +10,8 @@ pauseGameButton.addEventListener("click", function() { pauseGame() });
 resumeGameButton.addEventListener("click", function() { resumeGame() });
 
 var sounds = {
-    bg: new Audio("assets/Tetris.ogg"),
-    success: new Audio("assets/jose-yeahright.m4a"),
-    test: new Audio("assets/healing_01.mp3")
+    bg: new Audio("assets/Tetris.mp3"),
+    success: new Audio("assets/jose-yeahright.mp3")
 };
 
 // https://www.w3schools.com/tags/canvas_scale.asp
@@ -372,9 +371,9 @@ document.addEventListener('keydown', event =>{
 });
 
 function playBgSound() {
-    sounds.test.load()
-    sounds.test.addEventListener("canplaythrough", function() {
-        sounds.test.play().then(_ => {
+    sounds.bg.load()
+    sounds.bg.addEventListener("canplaythrough", function() {
+        sounds.bg.play().then(_ => {
             console.log("PLAY");
         }).catch(error => {
             console.log(error.message)
