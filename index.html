@@ -22,6 +22,9 @@
     <link rel="manifest" href="https://tetris.com/assets/images/favicon/manifest.json">
 
     <style>
+        /* *{
+            border: 1px solid red;
+        } */
         body{
             background: #202028;
             color: #fff;
@@ -39,11 +42,14 @@
 
     <audio autoplay="true" loop="true" src="assets/Tetris.ogg" type="audio/ogg"></audio>
     <div id="score"></div>
-    <button id="startGame" onclick="startGame()">
-        Start Game
-    </button>
     <canvas height="400" width="240" id="tetrisboard"></canvas>
+
+    <div>
+        <button id="startGame" style="margin: 0 auto;">Start Playing!</button>
+        <button id="pauseGame" style="display: none; margin: 0 auto;">Pause Game</button>
+        <button id="resumeGame" style="display: none; margin: 0 auto;">Resume Game</button>
     <footer>Made with ❤️ by Jose Moriglioni & Cristina Moreno</footer>
+    </div>
     <script src="tetris.js"></script>
 </body>
 </html>

@@ -1,6 +1,14 @@
 const canvas = document.getElementById('tetrisboard');
 const context = canvas.getContext('2d');
 
+const startGameButton = document.getElementById('startGame');
+const pauseGameButton = document.getElementById('pauseGame');
+const resumeGameButton = document.getElementById('resumeGame');
+
+startGameButton.addEventListener("click", startGame);
+pauseGameButton.addEventListener("click", pauseGame);
+resumeGameButton.addEventListener("click", resumeGame);
+
 var sounds = {
     bg: new Audio("assets/Tetris.ogg"),
 };
@@ -49,7 +57,6 @@ function createMatrix(w, h){
 
 
 function createPiece(type){
-    
     switch (type){
     case 'T':
         return[
@@ -106,9 +113,7 @@ function createPiece(type){
             [0, 0, 0]
         ]    
     break;
-
     }
-
 }
 
 
@@ -217,6 +222,9 @@ let dropCounter = 0;
 let dropInterval = 1000;
 
 let lastTime = 0;
+
+var playStory;
+
 function update (time = 0){
     const deltaTime = time - lastTime;
     lastTime = time;
@@ -226,9 +234,9 @@ function update (time = 0){
     }
     draw();
     // https://developer.mozilla.org/es/docs/Web/API/Window/requestAnimationFrame
-    requestAnimationFrame(update);
+    
+    playStop = requestAnimationFrame(update);
 
-    // backgroundMusic = new sound ("assets/Tetris.ogg");
 }
 
 function updateScore(){
@@ -265,7 +273,7 @@ document.addEventListener('keydown', event =>{
     }else if (event.keyCode === 40){
         // down arrow
         playerDrop();
-    }else if (event.keyCode === 32){
+    }else if (event.keyCode === 81){
         playerRotate(1);
     }
     //else if (event.keyCode === 87){
@@ -277,7 +285,7 @@ function playBgSound() {
     sounds.bg.load()
     sounds.bg.addEventListener("canplaythrough", function() {
         sounds.bg.play().then(_ => {
-            console.log("PLAY")
+            console.log("PLAY");
         }).catch(error => {
             console.log(error.message)
         });;
@@ -285,11 +293,40 @@ function playBgSound() {
 
 }
 
-
+var isPaused = true;
 function startGame() {
+    startGameButton.style.display = "none";
+    pauseGameButton.style.display = "block";
+    isPaused = false;
     playBgSound();
     playerReset();
     updateScore();
+    if (!isPaused){
+        update();
+    }
+}
+
+window.onkeydown = function() {
+    isPaused = !isPaused; // flips the pause state
+};
+
+
+
+function pauseGame(){
+    var isPaused = true;
+    pauseGameButton.style.display = "none";
+    resumeGameButton.style.display = "block";
+
+    window.cancelAnimationFrame(playStop);
+
+    sounds.bg.pause()
+
+}
+
+function resumeGame(){
+    resumeGameButton.style.display = "none";
+    pauseGameButton.style.display = "block";
     update();
+    sounds.bg.play()
 }
 
