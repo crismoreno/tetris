@@ -5,11 +5,9 @@ const startGameButton = document.getElementById('startGame');
 const pauseGameButton = document.getElementById('pauseGame');
 const resumeGameButton = document.getElementById('resumeGame');
 
-startGameButton.addEventListener("click", function() {
-    startGame();
-});
-pauseGameButton.addEventListener("click", pauseGame);
-resumeGameButton.addEventListener("click", resumeGame);
+startGameButton.addEventListener("click", function() { startGame() });
+pauseGameButton.addEventListener("click", function() { pauseGame() });
+resumeGameButton.addEventListener("click", function() { resumeGame() });
 
 var sounds = {
     bg: new Audio("assets/Tetris.ogg"),
