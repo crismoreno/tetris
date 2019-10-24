@@ -57,6 +57,10 @@ button{
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
+#left, #right{
+    width: 33%;
+}
+
 
 #resumeGame:active, #pauseGame:active, #startGame:active, #left:active, #down:active, #right:active, #rotate:active{
 	box-shadow: none;
@@ -79,5 +83,8 @@ button{
     canvas{
         height: 60vh;
         width: 80vw
+    }
+    #startGame, #pauseGame, #resumeGame{
+        width: 80vw;
     }
 }
