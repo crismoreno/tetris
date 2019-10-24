@@ -8,10 +8,10 @@
 }
 
 #score{
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
-    font-size: 20px;
+    left: 0; */
+    font-size: 30px;
     font-family: Arcade;
 }
 
@@ -49,13 +49,25 @@ button{
 	border-radius: 7px;
     box-shadow: 0 .2em gray; 
     cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 
 #resumeGame:active, #pauseGame:active, #startGame:active, #left:active, #down:active, #right:active, #rotate:active{
 	box-shadow: none;
 	position: relative;
-	top: .2em;
+    top: .2em;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 
@@ -65,7 +77,7 @@ button{
         display: flex !important;
     }
     canvas{
-        height: 70vh;
+        height: 60vh;
         width: 80vw
     }
 }
